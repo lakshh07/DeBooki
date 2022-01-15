@@ -1,0 +1,224 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Overpass:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Philosopher&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  @variants responsive {
+    /* Chrome, Safari and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .no-scrollbar {
+      -ms-overflow-style: none; /* IE and Edge */
+      scrollbar-width: none; /* Firefox */
+    }
+  }
+}
+
+@layer base {
+  div {
+    @apply no-scrollbar;
+  }
+  section {
+    @apply no-scrollbar;
+  }
+  body {
+    @apply no-scrollbar;
+    @apply text-gray-700;
+    font-family: "Josefin Sans", sans-serif;
+    background-color: "red";
+  }
+}
+
+.menu li > a:active {
+  @apply bg-white;
+}
+
+.menu li > a:hover {
+  @apply bg-white;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* /////// */
+.sec-1 {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  height: 100vh;
+  background-image: url(../src/assets/sbg.jpeg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.box-1 {
+  display: flex !important;
+  align-items: baseline;
+}
+.bb {
+  margin-left: 1em;
+}
+.box-1 h1 {
+  font-size: 4em !important;
+  font-family: "Philosopher", sans-serif !important;
+  color: black !important;
+  margin-bottom: 0.4em;
+  padding-right: 0.4em;
+  position: relative;
+  top: -5px;
+}
+.box-2 h1 {
+  font-size: 3em !important;
+  font-family: "Philosopher", sans-serif !important;
+  text-transform: capitalize;
+}
+.box-b {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between;
+  align-items: center;
+  background-color: whitesmoke;
+  border-radius: 10px;
+  padding: 2em;
+  margin: 1em 3em;
+  width: 450px;
+  cursor: pointer;
+  top: 0px;
+  position: relative;
+  z-index: 2;
+  transition: all 0.5 ease;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px !important;
+}
+.box-b p {
+  margin: 1em 0;
+}
+.box-b:hover {
+  transition: all 0.5 ease;
+  position: relative;
+  top: -5px;
+}
+.box-3 {
+  display: flex !important;
+  justify-content: space-between;
+  margin-top: 2.5em;
+}
+.box-3-btn:before {
+  background-color: #dbdbdb;
+  content: "";
+  height: calc(100% + 3px);
+  position: absolute;
+  right: -7px;
+  top: -9px;
+  transition: background-color 300ms ease-in;
+  width: 100%;
+  z-index: -1;
+}
+.box-3-btn {
+  background-color: transparent !important;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  color: #00132c;
+  font-family: "Josefin Sans";
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 24px;
+  width: 100%;
+  margin: 0 0 !important;
+  padding: 12px 16px;
+  position: relative;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+.box-b:hover .box-3-btn {
+  background-color: transparent;
+  cursor: pointer;
+  outline: 0;
+}
+.box-b:hover .box-3-btn:before {
+  background-color: #c3c3c3;
+}
+
+/*  */
+.bg-p {
+  background-image: url(../src/assets/navypurple.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 10px !important;
+}
+.bg-g {
+  background-image: url(../src/assets/navygreen.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 10px !important;
+}
+.v {
+  font-family: "Philosopher", sans-serif !important;
+  color: black !important;
+}
+.main-nav {
+  padding: 1em;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.m-bg {
+  background-image: url(../src/assets/home-banner.png) !important;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.h-shadow {
+  filter: drop-shadow(rgba(0, 0, 0, 0.4) 0px 5px 3px) !important;
+}
+
+.svgg {
+  background: rgb(241, 242, 243);
+  display: block;
+  width: "200px";
+  height: "200px";
+}
+
+.loading-bar {
+  width: 130px;
+  height: 2px;
+  background: #cfcfcf;
+  margin-top: 22px;
+  position: relative;
+  overflow: hidden;
+}
+
+.loading-bar::before {
+  content: "";
+  width: 68px;
+  height: 2px;
+  background: #000;
+  position: absolute;
+  left: -34px;
+  animation: bluebar 1.5s infinite ease;
+}
+
+@keyframes bluebar {
+  50% {
+    left: 96px;
+  }
+}
