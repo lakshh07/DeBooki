@@ -41,6 +41,5 @@ typechain
 
 #Hardhat files
 cache
-artifacts
 
 data.json
