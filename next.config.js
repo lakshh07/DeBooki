@@ -5,4 +5,5 @@ module.exports = {
     POLYGON_PRIVATE_KEY: process.env.POLYGON_PRIVATE_KEY,
     NFT_STORAGE: process.env.NFT_STORAGE,
   },
+  images: { loader: "custom" },
 };

@@ -170,6 +170,7 @@ const NewBook = (props: Props) => {
                 />
                 <Box align="center" pb="1em" cursor="pointer">
                   <Image
+                    unoptimized
                     src={`/add-file.png`}
                     height={200}
                     width={200}
