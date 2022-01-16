@@ -11,9 +11,9 @@ const PreviewBookCoverPage = ({ src, height, width }: Props) => {
   return (
     <div className="relative h-full w-full self-start flex items-center">
       {height && width ? (
-        <Image unoptimized src={src} height={height} width={width} layout="fixed" />
+        <Image src={src} height={height} width={width} layout="fixed" />
       ) : (
-        <Image unoptimized src={src} layout="fill" objectFit="cover" />
+        <Image src={src} layout="fill" objectFit="cover" />
       )}
     </div>
   );

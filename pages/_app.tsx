@@ -53,6 +53,9 @@ function MyApp({ Component, pageProps }: AppProps) {
                 <Head>
                   <title>DeBooki</title>
                   <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+                  <meta name="description" content="A Metaverse NFT Book Library" />
+                  <meta name="keywords" content="NextJs, Polygon, JavaScript, Nft Storage, IPFS, Vercel, Superfluid, Ethereum, Blockchain" />
+                  <meta name="author" content="Lakshay Maini" />
                   <link rel="icon" type="image/png" href={"/open-book.png"} />
                 </Head>
                 <Component {...pageProps} />

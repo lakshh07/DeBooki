@@ -218,7 +218,7 @@ const Exchange = () => {
             {selectedBook ? <Box mx="2em" mt="2em">
               <Grid templateColumns="repeat(2, 1fr)" align="center" gap="2em">
                 <Box w="max-content" boxShadow="rgba(0, 0, 0, 0.4) 0px 5px 15px" mx="auto" align="center">
-                  <Image unoptimized src={selectedBook.ebook_cover_image} height={550} width={450} />
+                  <Image src={selectedBook.ebook_cover_image} height={550} width={450} />
                 </Box>
                 <Box>
                   <Tabs fontFamily="Montserrat" variant='soft-rounded' isFitted colorScheme='green'>
@@ -375,7 +375,7 @@ const Exchange = () => {
               />
               {sellers}
 
-              <Image unoptimized src={selectedBook.ebook_cover_image} height={100} width={100} />
+              <Image src={selectedBook.ebook_cover_image} height={100} width={100} />
              </div>
           :
             <Text p="1em" align="center" fontFamily="Montserrat">Please Select Book NFT For Details</Text>

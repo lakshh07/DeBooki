@@ -147,7 +147,7 @@ const index = (props: Props) => {
                   Explore Now
                 </Button>
               </Box>
-              <Image unoptimized src={"/book.png"} height={580} width={550} />
+              <Image src={"/book.png"} height={580} width={550} />
             </Flex>
           </Box>
 
@@ -165,7 +165,7 @@ const index = (props: Props) => {
                   </Heading>
                   <Text mt="15px" fontSize="0.7em">Rent Your Favorite NFT Collection</Text>
                 </Box>
-                <Image unoptimized src={"/m2-1.png"} height={130} width={130} />
+                <Image src={"/m2-1.png"} height={130} width={130} />
               </Flex>
               <Flex w="400px" alignItems="center" py="2em" px="1em" rounded="10px" bg="rgb(224, 224, 224)" justifyContent="center">
                 <Box flex="2" align="left">
@@ -178,7 +178,7 @@ const index = (props: Props) => {
                   </Heading>
                   <Text mt="15px" fontSize="0.7em">Exchange Your NFT Collection With Community</Text>
                 </Box>
-                <Image unoptimized src={"/m2-3.png"} height={130} width={130} />
+                <Image src={"/m2-3.png"} height={130} width={130} />
               </Flex>
               <Flex 
                 w="400px" 
@@ -199,7 +199,7 @@ const index = (props: Props) => {
                   </Heading>
                   <Text mt="15px" fontSize="0.7em">Sell Your NFT Collection Easily</Text>
                 </Box>
-                <Image unoptimized src={"/m2-2.png"} height={130} width={130} />
+                <Image src={"/m2-2.png"} height={130} width={130} />
               </Flex>
             </Grid>
           </Box>

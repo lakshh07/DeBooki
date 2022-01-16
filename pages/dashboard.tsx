@@ -233,7 +233,7 @@ const Home = ({ selected, setSelected }: Props) => {
           <TabPanel>
             <Box mt="4em">
               <Flex rounded="10px" bg="rgb(234, 234, 234)" p="2em" px="5em" justifyContent="center" flexDir="column" alignItems="center">
-                <Image unoptimized src={"/deal.png"} height={200} width={200}></Image>
+                <Image src={"/deal.png"} height={200} width={200}></Image>
                 <Box align="center">
                   <Heading mt="1em" fontFamily="Montserrat">First NFTs Book Exchange</Heading>
                   <Text my="1em" fontFamily="Montserrat">Trustless, Peer-to-Peer network of readers to exchange books quickly and seamlessly. This platform is of you, for you and by you, no matter who you are, where you live and what you read...</Text>
@@ -260,7 +260,7 @@ const Home = ({ selected, setSelected }: Props) => {
                 })
                 :
                 <Flex mt="9em" justifyContent="center" flexDir="column" alignItems="center">
-                  <Image unoptimized src={"/no-results.png"} height={180} width={180} />
+                  <Image src={"/no-results.png"} height={180} width={180} />
                   <Heading fontSize="2em" pt="1em" fontFamily="Montserrat">Desk Is Empty</Heading>
                 </Flex>
               }

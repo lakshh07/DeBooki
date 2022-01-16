@@ -146,7 +146,7 @@ function shelf() {
                             </Wrap>
                         : 
                              <Flex mt="9em" justifyContent="center" flexDir="column" alignItems="center">
-                                <Image unoptimized src={"/no-results.png"} height={180} width={180} />
+                                <Image src={"/no-results.png"} height={180} width={180} />
                                 <Heading fontSize="2em" pt="1em" fontFamily="Montserrat">Shelf Is Empty</Heading>
                             </Flex> 
                         }
@@ -169,7 +169,7 @@ function shelf() {
                             </Wrap>
                         : 
                              <Flex mt="9em" justifyContent="center" flexDir="column" alignItems="center">
-                                <Image unoptimized src={"/no-results.png"} height={180} width={180} />
+                                <Image src={"/no-results.png"} height={180} width={180} />
                                 <Heading fontSize="2em" pt="1em" fontFamily="Montserrat">Shelf Is Empty</Heading>
                             </Flex> 
                         }
@@ -191,7 +191,7 @@ function shelf() {
                             </Wrap>
                         : 
                              <Flex mt="9em" justifyContent="center" flexDir="column" alignItems="center">
-                                <Image unoptimized src={"/no-results.png"} height={180} width={180} />
+                                <Image src={"/no-results.png"} height={180} width={180} />
                                 <Heading fontSize="2em" pt="1em" fontFamily="Montserrat">Shelf Is Empty</Heading>
                             </Flex> 
                         }
