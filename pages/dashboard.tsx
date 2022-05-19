@@ -22,9 +22,10 @@ import {
   Avatar,
   Wrap,
   WrapItem,
-  Link
+  Link,
+  IconButton
 } from "@chakra-ui/react";
-import { AiOutlinePlus, AiFillHome } from "react-icons/ai"
+import { AiOutlinePlus, AiFillHome,AiOutlineLogout } from "react-icons/ai"
 import { CgArrowsExchange } from "react-icons/cg";
 import { GiBookshelf } from "react-icons/gi"
 import { MdOutlineCollectionsBookmark } from "react-icons/md"
@@ -34,6 +35,7 @@ import BookPublishedDeskCard from "../src/components/common/BookPublishedDeskCar
 import { useRouter } from "next/router"
 // import Exchange from "./dashboard/exchange";
 import Shelf from "./dashboard/shelf";
+import UAuth from "@uauth/js";
 
 interface Props {
   selected: 1 | 2 | 3;
@@ -52,6 +54,13 @@ const Home = ({ selected, setSelected }: Props) => {
   const [selectedIndex, setSelectedIndex] = useState(1);
   const [exchangeData, setExchangeData] = useState<string>("");
   const [buyState, setBuyState] = useState<boolean>(true);
+  const [domain, setDomain] = useState(undefined);
+
+  const uauth = new UAuth({
+    clientID: process.env.UD_CLIENT_ID,
+    scope: process.env.UD_SCOPE,
+    redirectUri: process.env.UD_REDIRECT_URI,
+  });
 
   useEffect(() => {
     if (router.query.selected) {
@@ -80,6 +89,12 @@ const Home = ({ selected, setSelected }: Props) => {
 
   useEffect(() => {
     router.prefetch(`/dashboard/newbook`);
+    uauth
+      .user()
+      .then((res) => {
+        setDomain(res.sub)
+      })
+      .catch((err) => console.error(err.message));
     signer &&
       getRecentLaunches(signer.signer).then(
         async (recentLaunchesMetadataURIs) => {
@@ -96,13 +111,24 @@ const Home = ({ selected, setSelected }: Props) => {
         }
       );
       console.log(network);
-      setAdd(signer.address);
+      domain ? setAdd(domain) : setAdd(`${signer.address.substr(0, 6)}...${signer.address.substr(-4)}`);
       let svg = svgAvatarGenerator(add, { dataUri: true });
       setAvatar(svg);
     return () => {
       setLoading(true);
     };
-  }, [signer, network]);
+  }, [signer, network, domain, setDomain]);
+
+  const handleLogout = async () => {
+   await uauth
+      .logout()
+      .then((res) => console.log(res))
+      .catch((err) => console.error(err.message))
+    
+      router.push({
+        pathname: "/",
+      })
+  };
 
   return (
     <Box m="0px" p="1.5em" position="relative" top="0" h="100vh" bg="rgb(200, 200, 200)">
@@ -188,9 +214,11 @@ const Home = ({ selected, setSelected }: Props) => {
                 >
                   
                   <Avatar mr="5px" size="xs" src={avatar} />
-                  {add.substr(0, 6)}...{add.substr(-4)}
+                  {add}
+                  {/* {add.substr(0, 6)}...{add.substr(-4)} */}
                 </Tag> 
               }
+              {domain && <IconButton aria-label='AiOutlineLogout' onClick={handleLogout} icon={<AiOutlineLogout />} />}
             </Box>
           </Box>
 

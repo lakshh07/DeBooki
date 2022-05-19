@@ -1,13 +1,18 @@
 import { useRouter } from "next/router";
 import Image from "next/image";
 // import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useLoadingContext } from "../src/context/Loading";
 import { useSignerContext } from "../src/context/Signer";
+import Web3modal from "./dashboard/Web3modal";
 import { connectToWallet } from "../src/controllers/ConnectWallet";
-import { useToast, Tag, Link, Avatar ,Button , Box, Heading, Text,Grid, Flex ,Divider , Icon} from '@chakra-ui/react'
+import { useToast, Tag, Link, Avatar ,Button , Box, Heading, Text,Grid, Flex ,Divider , Icon, useDisclosure} from '@chakra-ui/react'
 import svgAvatarGenerator from "../src/context/avatar";
 import {BsArrowRight} from "react-icons/bs";
+import { ethers, Signer } from "ethers";
+
+import UAuth from "@uauth/js";
+
 
 interface Props {}
 
@@ -18,7 +23,53 @@ const index = (props: Props) => {
   const { setSigner, signer } = useSignerContext();
   const [add, setAdd] = useState(undefined);
   const [avatar, setAvatar] = useState(undefined);
- 
+  
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+
+  const uauth = new UAuth({
+    clientID: process.env.UD_CLIENT_ID,
+    scope: process.env.UD_SCOPE,
+    redirectUri: process.env.UD_REDIRECT_URI,
+  });
+
+  const handleLogin = async () => {
+    await uauth
+      .loginWithPopup()
+      .then(() => uauth.user().then((res)=>{
+        console.log(res)
+        setSigner({ subdomain: res.sub})
+        setAdd(res.sub)
+      }))
+      .catch((err) => console.error(err.message))
+      // .finally(() => setLoading(false));
+    await metamaskLogin()
+    console.log(signer)
+  };
+  async function metamaskLogin() {
+    const [account] = await window.ethereum.request({
+      method: "eth_requestAccounts",
+    });
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+      const signer = provider.getSigner();
+
+    signer && toast({
+        title: 'Yeah, Wallet Connected !',
+        status: 'success',
+        duration: 5000,
+        isClosable: false,
+        position: "top",
+      });
+    
+    setSigner({address: account, signer: signer})
+  }
+
+  const handleLogout = () => {
+    uauth
+      .logout()
+      .then((res) => console.log(res))
+      .catch((err) => console.error(err.message))
+  };
 
   useEffect(() => {
     router.prefetch(`/dashboard`);
@@ -28,6 +79,7 @@ const index = (props: Props) => {
     
     let svg = svgAvatarGenerator(add, { dataUri: true });
     setAvatar(svg);
+// handleLogout()
   }, []);
 
   async function connectToWallett(){
@@ -45,7 +97,9 @@ const index = (props: Props) => {
         const _address = await _signer.getAddress();
         const _network = window.ethereum.networkVersion
         console.log(_network)
-        setAdd(_address);
+        const a = `${_address.substr(0, 6)}...${_address}.substr(-4)`;
+        // setAdd
+        setAdd(`${_address.substr(0, 6)}...${_address.substr(-4)}`);
         _address &&
           toast({
             title: 'Yeah, Wallet Connected !',
@@ -96,7 +150,8 @@ const index = (props: Props) => {
                       fontFamily="Montserrat"
                     >
                       <Avatar mr="5px" size="xs" src={avatar} />
-                      {add.substr(0, 6)}...{add.substr(-4)}
+                      {/* {add.substr(0, 6)}...{add.substr(-4)} */}
+                      {/* {signer?.subdomain} */}{add}
                     </Tag>
                   ) : (
                     <Button 
@@ -111,12 +166,18 @@ const index = (props: Props) => {
                         boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px"
                       }} 
                       fontFamily="Montserrat"
-                      onClick={connectToWallett}
+                      // onClick={connectToWallett}
+                      onClick={onOpen}
+                      // onClick={loadWeb3Modal}
+                      // onClick={handleUAuthConnect}
                     >
                       Connect Wallet
                     </Button>
                   )
                 }
+                <Web3modal handleLogin={handleLogin}
+                 connectToWallett={connectToWallett} 
+                 isOpen={isOpen} onClose={onClose} />
               </Box>
             </Flex>
             <Divider/>

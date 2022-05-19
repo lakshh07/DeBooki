@@ -17,6 +17,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     | {
         address: string;
         signer: ethers.providers.JsonRpcSigner;
+        subdomain: string;
       }
     | undefined
   >(undefined);
@@ -50,6 +51,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             {loading && <Loading />}
             <div className={`${loading && "filter blur-xl bg-gray-100"}`}>
               <ChakraProvider>
+               
                 <Head>
                   <title>DeBooki</title>
                   <meta name="viewport" content="initial-scale=1.0, width=device-width" />
@@ -59,6 +61,7 @@ function MyApp({ Component, pageProps }: AppProps) {
                   <link rel="icon" type="image/png" href={"/open-book.png"} />
                 </Head>
                 <Component {...pageProps} />
+              
               </ChakraProvider>
             </div>
           {/* </div> */}
