@@ -26,11 +26,10 @@ const index = (props: Props) => {
   
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-
   const uauth = new UAuth({
-    clientID: process.env.UD_CLIENT_ID,
-    scope: process.env.UD_SCOPE,
-    redirectUri: process.env.UD_REDIRECT_URI,
+    clientID: process.env.NEXT_PUBLIC_UD_CLIENT_ID,
+    scope: process.env.NEXT_PUBLIC_UD_SCOPE,
+    redirectUri: process.env.NEXT_PUBLIC_UD_REDIRECT_URI,
   });
 
   const handleLogin = async () => {
