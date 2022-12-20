@@ -52,6 +52,34 @@ input::-webkit-inner-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
 }
+.h-shadow {
+  filter: drop-shadow(rgba(0, 0, 0, 0.4) 0px 5px 3px) !important;
+}
+.h-shadow-white {
+  filter: drop-shadow(rgba(255, 255, 255, 0.4) 0px 5px 3px) !important;
+}
+.rotate {
+  transform: rotate(180deg);
+}
+.text-v {
+  transform: rotate(180deg);
+  writing-mode: vertical-rl !important;
+}
+.border-bottom {
+  border-right: 1.5px solid #ffbb8a;
+}
+
+.f-box {
+  position: relative;
+  top: 0;
+  transition: all 0.3s ease;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  cursor: pointer;
+}
+.f-box:hover {
+  top: -5px;
+  box-shadow: rgba(100, 100, 111, 0.4) 0px 7px 29px 0px;
+}
 
 /* /////// */
 .sec-1 {
@@ -180,9 +208,22 @@ input[type="number"] {
   top: 0;
   right: 0;
 }
-
+.address-box {
+  background: rgba(254, 97, 97, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+  backdrop-filter: blur(3.5px);
+  -webkit-backdrop-filter: blur(3.5px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
 .m-bg {
   background-image: url(../src/assets/home-banner.png) !important;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.m-bg-2 {
+  background-image: url(../src/assets/texture-7.png) !important;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
